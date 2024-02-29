@@ -98,4 +98,32 @@
     <Word>kiwi</Word>
     <Result>Won</Result>
   </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>90</Score>
+    <PlayDate>2024-02-29 22:30:49</PlayDate>
+    <Word>kiwi</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>140</Score>
+    <PlayDate>2024-02-29 22:32:30</PlayDate>
+    <Word>pineapple</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Elene</PlayerName>
+    <Score>140</Score>
+    <PlayDate>2024-02-29 22:32:51</PlayDate>
+    <Word>pineapple</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Saba</PlayerName>
+    <Score>0</Score>
+    <PlayDate>2024-02-29 22:33:07</PlayDate>
+    <Word>grape</Word>
+    <Result>Lost</Result>
+  </Game>
 </Games>

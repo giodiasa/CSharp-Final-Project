@@ -6,6 +6,7 @@ namespace HangmanGame
     {
         private readonly ILogger _logger;
         private bool isGameFinished = false;
+        string tryAgain = string.Empty;
         public Game(ILogger logger)
         {
             _logger = logger;
@@ -54,22 +55,27 @@ namespace HangmanGame
                             correct = true;
                             if (count == wordToGuess.Length)
                             {
+                                foreach (char letter in letters)
+                                {
+                                    Console.Write(letter);
+                                }
+                                Console.WriteLine();
                                 Console.WriteLine($"Congrats {name}, you guessed all the letters, you won!");
                                 score += 50;
                                 _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Won");
                                 Console.WriteLine("Do you want to play again? (y/n)");
-                                string again = Console.ReadLine()!;
-                                while (again != "n" && again != "y")
+                                tryAgain = Console.ReadLine()!;
+                                while (tryAgain != "n" && tryAgain != "y")
                                 {
                                     Console.WriteLine("y/n");
-                                    again = Console.ReadLine()!;
+                                    tryAgain = Console.ReadLine()!;
                                 }
-                                if (again == "n")
+                                if (tryAgain == "n")
                                 {
                                     isGameFinished = true;
                                     return;
                                 }
-                                else if (again == "y")
+                                else if (tryAgain == "y")
                                 {
                                     GuessTheWord();
                                     if (isGameFinished) return;
@@ -85,6 +91,22 @@ namespace HangmanGame
                     if (!correct) { Console.WriteLine("Wrong letter"); }
                     Console.WriteLine($"You can guess {6 - i - 1} more letters");
                 }
+                if (count == 0)
+                {
+                    Console.WriteLine("You lost..");
+                    _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Lost");
+                    Console.WriteLine("Do you want to play again? (y/n)");
+                    tryAgain = Console.ReadLine()!;
+                    while (tryAgain != "n" && tryAgain != "y")
+                    {
+                        Console.WriteLine("y/n");
+                        tryAgain = Console.ReadLine()!;
+                    }
+                    if (tryAgain == "n")
+                    {
+                        break;
+                    }
+                }
                 Console.WriteLine("Guess the word");
                 guessedWord = Console.ReadLine()!.ToLower();
                 if (guessedWord == wordToGuess)
@@ -99,7 +121,7 @@ namespace HangmanGame
                     _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Lost");
                 }
                 Console.WriteLine("Do you want to play again? (y/n)");
-                string tryAgain = Console.ReadLine()!;
+                tryAgain = Console.ReadLine()!;
                 while (tryAgain != "n" && tryAgain != "y")
                 {
                     Console.WriteLine("y/n");
