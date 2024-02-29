@@ -1,0 +1,34 @@
+﻿using System.Xml.Linq;
+
+namespace HangmanGame
+{
+    internal class Logger : ILogger
+    {
+        public void LogGameHistory(string name, int score, string dateTime, string word, string result)
+        {
+            string path = "C:\\Users\\giodi\\Desktop\\C# Final Project\\HangmanGame\\gamehistory.xml";
+            XDocument xmlDoc;
+            if (File.Exists(path))
+            {
+                xmlDoc = XDocument.Load(path);
+            }
+            else
+            {
+                xmlDoc = new XDocument(new XElement("Games"));
+            }
+
+            XElement gameElement = new XElement("Game",
+                new XElement("PlayerName", name),
+                new XElement("Score", score),
+                new XElement("PlayDate", dateTime),
+                new XElement("Word", word),
+                new XElement("Result", result));
+
+            xmlDoc.Root?.Add(gameElement);
+
+            xmlDoc.Save(path);
+
+            Console.WriteLine("Game data logged successfully!");
+        }
+    }
+}

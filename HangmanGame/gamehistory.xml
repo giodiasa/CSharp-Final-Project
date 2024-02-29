@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Games>
+  <Game>
+    <PlayerName>Elene</PlayerName>
+    <Score>130</Score>
+    <PlayDate>2024-02-29 21:40:26</PlayDate>
+    <Word>orange</Word>
+    <Result>Lost</Result>
+  </Game>
+  <Game>
+    <PlayerName>Saba</PlayerName>
+    <Score>100</Score>
+    <PlayDate>2024-02-29 21:44:24</PlayDate>
+    <Word>apple</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>100</Score>
+    <PlayDate>2024-02-29 21:46:50</PlayDate>
+    <Word>grape</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>giorgi</PlayerName>
+    <Score>50</Score>
+    <PlayDate>2024-02-29 21:48:54</PlayDate>
+    <Word>apple</Word>
+    <Result>Lost</Result>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>100</Score>
+    <PlayDate>2024-02-29 21:50:32</PlayDate>
+    <Word>peach</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Nino</PlayerName>
+    <Score>100</Score>
+    <PlayDate>2024-02-29 21:51:04</PlayDate>
+    <Word>grape</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Levan</PlayerName>
+    <Score>20</Score>
+    <PlayDate>2024-02-29 21:51:21</PlayDate>
+    <Word>orange</Word>
+    <Result>Lost</Result>
+  </Game>
+  <Game>
+    <PlayerName>Elene</PlayerName>
+    <Score>100</Score>
+    <PlayDate>2024-02-29 21:52:56</PlayDate>
+    <Word>apple</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>110</Score>
+    <PlayDate>2024-02-29 21:53:07</PlayDate>
+    <Word>banana</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Nikoloz</PlayerName>
+    <Score>110</Score>
+    <PlayDate>2024-02-29 21:53:32</PlayDate>
+    <Word>banana</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>100</Score>
+    <PlayDate>2024-02-29 21:53:49</PlayDate>
+    <Word>grape</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>120</Score>
+    <PlayDate>2024-02-29 22:11:37</PlayDate>
+    <Word>strawberry</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Niko</PlayerName>
+    <Score>100</Score>
+    <PlayDate>2024-02-29 22:12:37</PlayDate>
+    <Word>grape</Word>
+    <Result>Won</Result>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>90</Score>
+    <PlayDate>2024-02-29 22:17:55</PlayDate>
+    <Word>kiwi</Word>
+    <Result>Won</Result>
+  </Game>
+</Games>
