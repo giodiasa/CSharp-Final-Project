@@ -4,7 +4,7 @@ namespace HangmanGame
 {
     internal class Logger : ILogger
     {
-        public void LogGameHistory(string name, int score, string dateTime, string word, string result)
+        public void LogGameHistory(string name, int score, string dateTime, string word, string result, string difficulty)
         {
             string path = "C:\\Users\\giodi\\Desktop\\C# Final Project\\HangmanGame\\gamehistory.xml";
             XDocument xmlDoc;
@@ -22,7 +22,8 @@ namespace HangmanGame
                 new XElement("Score", score),
                 new XElement("PlayDate", dateTime),
                 new XElement("Word", word),
-                new XElement("Result", result));
+                new XElement("Result", result),
+                new XElement("Difficulty", difficulty));
 
             xmlDoc.Root?.Add(gameElement);
 

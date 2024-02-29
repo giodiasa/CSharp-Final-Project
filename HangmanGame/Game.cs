@@ -7,6 +7,7 @@ namespace HangmanGame
         private readonly ILogger _logger;
         private bool isGameFinished = false;
         string tryAgain = string.Empty;
+        string filePath = "C:\\Users\\giodi\\Desktop\\C# Final Project\\HangmanGame\\words.txt";
         public Game(ILogger logger)
         {
             _logger = logger;
@@ -14,16 +15,40 @@ namespace HangmanGame
         public void GuessTheWord()
         {                     
             int score = 0;
-            List<string> words = new List<string>
-            {
-                "apple", "banana", "orange", "grape", "kiwi",
-                "strawberry", "pineapple", "blueberry", "peach", "watermelon"
-            };
+            List<string> words = File.ReadAllLines(filePath).ToList();
             while (true)
             {
                 Console.WriteLine("Enter your name");
                 string name = Console.ReadLine()!;
-                string wordToGuess = words[new Random().Next(9)];
+                Console.WriteLine("Choose difficulty (Easy/Medium/Hard)");
+                string difficulty = Console.ReadLine()!.ToLower();
+                while (difficulty != "easy" && difficulty != "medium" && difficulty != "hard")
+                {
+                    Console.WriteLine("Choose difficulty (Easy/Medium/Hard");
+                    difficulty = Console.ReadLine()!.ToLower();
+                }
+                int tries = 0;
+                int pointForGuessedLetter = 0;
+                int pointForWinning = 0;
+                switch (difficulty)
+                {
+                    case "easy":
+                        tries = 18;
+                        pointForGuessedLetter = 1;
+                        pointForWinning = 10;
+                        break;
+                    case "medium":
+                        tries = 12;
+                        pointForGuessedLetter = 5;
+                        pointForWinning = 30;
+                        break;
+                    case "hard":
+                        tries = 6;
+                        pointForGuessedLetter = 10;
+                        pointForWinning = 50;
+                        break;
+                }
+                string wordToGuess = words[new Random().Next(words.Count)];
                 Console.WriteLine($"Word has {wordToGuess.Length} letters");
                 char[] letters = new char[wordToGuess.Length];
                 for (int i = 0; i < wordToGuess.Length; i++)
@@ -32,7 +57,7 @@ namespace HangmanGame
                 }
                 string guessedWord;
                 int count = 0;
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < tries; i++)
                 {
                     Console.WriteLine("Guess the letter");
                     char guessedLetter = default;
@@ -46,12 +71,17 @@ namespace HangmanGame
                     bool correct = false;
                     for (int j = 0; j < wordToGuess.Length; j++)
                     {
+                        int numberOfOccurrences = 0;
                         if (char.ToLower(guessedLetter) == wordToGuess[j])
                         {
-                            count++;
+                            numberOfOccurrences++;
+                            if(!letters.Any(x => x == guessedLetter))
+                            {
+                                count+=numberOfOccurrences;
+                            }
                             Console.WriteLine($"Letter {guessedLetter} is at the position {j + 1}");
                             letters[j] = guessedLetter;                            
-                            score += 10;
+                            score += pointForGuessedLetter;
                             correct = true;
                             if (count == wordToGuess.Length)
                             {
@@ -61,8 +91,8 @@ namespace HangmanGame
                                 }
                                 Console.WriteLine();
                                 Console.WriteLine($"Congrats {name}, you guessed all the letters, you won!");
-                                score += 50;
-                                _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Won");
+                                score += pointForWinning;
+                                _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Won", difficulty);
                                 Console.WriteLine("Do you want to play again? (y/n)");
                                 tryAgain = Console.ReadLine()!;
                                 while (tryAgain != "n" && tryAgain != "y")
@@ -89,12 +119,12 @@ namespace HangmanGame
                     }
                     Console.WriteLine();
                     if (!correct) { Console.WriteLine("Wrong letter"); }
-                    Console.WriteLine($"You can guess {6 - i - 1} more letters");
+                    Console.WriteLine($"You can guess {tries - i - 1} more letters");
                 }
                 if (count == 0)
                 {
                     Console.WriteLine("You lost..");
-                    _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Lost");
+                    _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Lost", difficulty);
                     Console.WriteLine("Do you want to play again? (y/n)");
                     tryAgain = Console.ReadLine()!;
                     while (tryAgain != "n" && tryAgain != "y")
@@ -112,13 +142,13 @@ namespace HangmanGame
                 if (guessedWord == wordToGuess)
                 {
                     Console.WriteLine($"Congrats {name}, {guessedWord} is right");
-                    score += 50;
-                    _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Won");
+                    score += pointForWinning;
+                    _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Won", difficulty);
                 }
                 else
                 {
                     Console.WriteLine("Wrong, you lost..");
-                    _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Lost");
+                    _logger.LogGameHistory(name, score, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), wordToGuess, "Lost", difficulty);
                 }
                 Console.WriteLine("Do you want to play again? (y/n)");
                 tryAgain = Console.ReadLine()!;
