@@ -62,7 +62,7 @@ namespace ATMOperations
                 }
             }            
         }
-        public void Login(Customer customer)
+        private void Login(Customer customer)
         {
             while (true)
             {
@@ -101,7 +101,7 @@ namespace ATMOperations
                 }
             }
         }
-        public void Register()
+        private void Register()
         {
             Console.WriteLine("Enter your first name");
             string firstName = Console.ReadLine()!;
@@ -130,7 +130,7 @@ namespace ATMOperations
             File.WriteAllText(customersFilePath, updatedJson);
             Console.WriteLine($"You have successfully registered, Your password is {password}");
         }
-        public void Deposit(Customer customer)
+        private void Deposit(Customer customer)
         {
             Console.WriteLine("Enter amount to deposit");
             double amount = 0;
@@ -149,7 +149,7 @@ namespace ATMOperations
             });
             File.WriteAllText(customersFilePath, updatedJson);
         }
-        public void Withdraw(Customer customer)
+        private void Withdraw(Customer customer)
         {
             Console.WriteLine("Enter amount to withdraw");
             double amount = 0;
