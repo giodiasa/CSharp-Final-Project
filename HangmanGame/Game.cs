@@ -7,7 +7,7 @@ namespace HangmanGame
         private readonly ILogger _logger;
         private bool isGameFinished = false;
         string tryAgain = string.Empty;
-        string filePath = "C:\\Users\\giodi\\Desktop\\C# Final Project\\HangmanGame\\words.txt";
+        string filePath = @"../../../words.txt";
         public Game(ILogger logger)
         {
             _logger = logger;
@@ -69,9 +69,9 @@ namespace HangmanGame
                             Console.WriteLine("Enter valid letter");
                     }
                     bool correct = false;
+                    int numberOfOccurrences = 0;
                     for (int j = 0; j < wordToGuess.Length; j++)
                     {
-                        int numberOfOccurrences = 0;
                         if (char.ToLower(guessedLetter) == wordToGuess[j])
                         {
                             numberOfOccurrences++;

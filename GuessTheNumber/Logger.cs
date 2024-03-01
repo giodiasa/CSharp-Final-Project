@@ -11,7 +11,7 @@ namespace GuessTheNumber
         public void LogGameHistory(string difficulty, string name, int attempts, DateTime dateTime)
         {
             string header = "Difficulty,Name,Attempts,Time";
-            string path = "C:\\Users\\giodi\\Desktop\\C# Final Project\\GuessTheNumber\\gamehistory.csv";
+            string path = @"../../../gamehistory.csv";
             string line = $"{difficulty},{name},{attempts},{dateTime}";
             bool fileExists = File.Exists(path);
             using(StreamWriter sw = new StreamWriter(path, true))

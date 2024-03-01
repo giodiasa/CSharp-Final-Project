@@ -6,7 +6,7 @@ namespace HangmanGame
     {
         public void LogGameHistory(string name, int score, string dateTime, string word, string result, string difficulty)
         {
-            string path = "C:\\Users\\giodi\\Desktop\\C# Final Project\\HangmanGame\\gamehistory.xml";
+            string path = @"../../../gamehistory.xml";
             XDocument xmlDoc;
             if (File.Exists(path))
             {

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Games>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>3</Score>
+    <PlayDate>2024-03-01 12:07:27</PlayDate>
+    <Word>number</Word>
+    <Result>Lost</Result>
+    <Difficulty>easy</Difficulty>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>31</Score>
+    <PlayDate>2024-03-01 12:08:48</PlayDate>
+    <Word>parallel</Word>
+    <Result>Won</Result>
+    <Difficulty>easy</Difficulty>
+  </Game>
+  <Game>
+    <PlayerName>Giorgi</PlayerName>
+    <Score>13</Score>
+    <PlayDate>2024-03-01 12:14:44</PlayDate>
+    <Word>map</Word>
+    <Result>Won</Result>
+    <Difficulty>easy</Difficulty>
+  </Game>
+</Games>
