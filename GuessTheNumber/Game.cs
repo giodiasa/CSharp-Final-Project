@@ -17,7 +17,19 @@ namespace GuessTheNumber
         public void GuessTheNumber()
         {
             while (true)
-            {
+            {                
+                Console.WriteLine("1 - Play, 2 - Check Top 10 scores");
+                string choise = Console.ReadLine()!;
+                while (choise != "1" && choise != "2")
+                {
+                    Console.WriteLine("Invalid input, try again..");
+                    choise = Console.ReadLine()!;
+                }
+                if(choise == "2")
+                {
+                    _logger.GetTop10();
+                    continue;
+                }
                 Console.WriteLine("Enter your name");
                 string user = Console.ReadLine()!;
                 Console.WriteLine("Choose difficulty (Easy/Medium/Hard)");
@@ -28,16 +40,20 @@ namespace GuessTheNumber
                     difficulty = Console.ReadLine()!.ToLower();
                 }
                 int max = 0;
+                double multiplier = 0;
                 switch (difficulty)
                 {
                     case "easy":
                         max = 15;
+                        multiplier = 1;
                         break;
                     case "medium":
                         max = 25;
+                        multiplier = 1.5;
                         break;
                     case "hard":
                         max = 50;
+                        multiplier = 2;
                         break;
                 }
                 int numberToGuess = new Random().Next(1, max);
@@ -55,8 +71,32 @@ namespace GuessTheNumber
                     }
                     if (number == numberToGuess)
                     {
-                        Console.WriteLine($"Congrats {user}, You won in {counter} attempts");
-                        _logger.LogGameHistory(difficulty, user, counter, DateTime.Now);
+                        double score = 0;
+                        switch (counter)
+                        {
+                            case 1: score = 100 * multiplier;
+                                break;
+                            case 2: score = 90 * multiplier;
+                                break;
+                            case 3: score = 80 * multiplier;
+                                break;
+                            case 4: score = 70 * multiplier;
+                                break;
+                            case 5: score = 60 * multiplier;
+                                break;
+                            case 6: score = 50 * multiplier;
+                                break;
+                            case 7: score = 40 * multiplier;
+                                break;
+                            case 8: score = 30 * multiplier;
+                                break;
+                            case 9: score = 20 * multiplier;
+                                break;
+                            case 10: score = 10 * multiplier;
+                                break;
+                        }
+                        Console.WriteLine($"Congrats {user}, You won in {counter} attempts, your score is {score}");
+                        _logger.LogGameHistory(difficulty, user, score, DateTime.Now);
                         Console.WriteLine("Do you want to play again? (y/n)");
                         string again = Console.ReadLine()!;
                         while (again != "n" && again != "y")

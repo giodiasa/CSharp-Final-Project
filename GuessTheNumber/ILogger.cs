@@ -8,6 +8,7 @@ namespace GuessTheNumber
 {
     internal interface ILogger
     {
-        public void LogGameHistory(string difficulty, string name, int attempts, DateTime dateTime);
+        public void LogGameHistory(string difficulty, string name, double score, DateTime dateTime);
+        public void GetTop10();
     }
 }
